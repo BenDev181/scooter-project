@@ -19,7 +19,7 @@ describe('ScooterApp Method Tests', () => {
     expect(response).toBeInstanceOf(User)
   })
   test('LoginUser() should login user', () => {
-    scooterApp.registerUser('Joe Bloggs', 'test123', 21)
+    const user = scooterApp.registerUser('Joe Bloggs', 'test123', 21)
     scooterApp.loginUser('Joe Bloggs', 'test123')
     expect(user.loggedIn).toBe(true)
   })
