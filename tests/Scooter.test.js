@@ -1,15 +1,17 @@
-const Scooter = require('../src/Scooter')
+const Scooter = require('../src/Scooter.js')
+const User = require('../src/User.js')
 
 let scooter1;
+let user1;
 
 beforeEach(() => {
   Scooter.nextSerial = 1
   scooter1 = new Scooter("London")
   scooter2 = new Scooter("London")
+  user1 = new User("Ben", "password", 23)
 })
 
-// typeof scooter === object
-describe('scooter object', () => {
+describe('Scooter Property Tests', () => {
   test('Scooter class should create Scooter instance', () => {
     expect(scooter1).toBeInstanceOf(Scooter)
   })
@@ -32,10 +34,10 @@ describe('scooter object', () => {
 })
 
 // Method tests
-describe('scooter methods', () => {
+describe('Scooter Method Tests', () => {
   test('Scooter is checked out if physical conditions are met', () => {
-    scooter1.rent("Ben")
-    expect(scooter1.user).toBe("Ben")
+    scooter1.rent(user1)
+    expect(scooter1.user).toEqual(user1)
     expect(scooter1.station).toBe(null)
   })
   test('Scooter is returned to station when dock(station) is called', () => {
